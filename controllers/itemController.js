@@ -1,6 +1,5 @@
 const Item = require('../models/Item');
 
-// List all items
 exports.getAllItems = async (req, res) => {
     try {
         const items = await Item.find();
@@ -11,12 +10,10 @@ exports.getAllItems = async (req, res) => {
     }
 };
 
-// Show form to create a new item
 exports.showNewItemForm = (req, res) => {
     res.render('new');
 };
 
-// Create a new item
 exports.createItem = async (req, res) => {
     try {
         const newItem = new Item({
@@ -31,7 +28,6 @@ exports.createItem = async (req, res) => {
     }
 };
 
-// Show form to edit an item
 exports.showEditItemForm = async (req, res) => {
     try {
         const item = await Item.findById(req.params.id);
@@ -46,7 +42,6 @@ exports.showEditItemForm = async (req, res) => {
     }
 };
 
-// Update an item
 exports.updateItem = async (req, res) => {
     try {
         const item = await Item.findById(req.params.id);
@@ -64,7 +59,6 @@ exports.updateItem = async (req, res) => {
     }
 };
 
-// Delete an item
 exports.deleteItem = async (req, res) => {
     try {
         await Item.findByIdAndDelete(req.params.id);
